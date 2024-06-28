@@ -8,7 +8,7 @@ function App() {
   const [notes, setNotes] = useState<NoteProps[]>([])
   const isInitialLoad = useRef(true);
 
-  const localhost = 'http://localhost:7377/notes';
+  const localhost = 'https://ra-16-crud-back.onrender.com/notes';
 
   interface dataProps {
     id?: number,
