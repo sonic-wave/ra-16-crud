@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import { Note, NoteProps } from './components/Note/Note'
 import { Input } from './components/Input/Input'
@@ -6,6 +6,7 @@ import { NotesUpdate } from './components/NotesUpdate/NotesUpdate'
 
 function App() {
   const [notes, setNotes] = useState<NoteProps[]>([])
+  const isInitialLoad = useRef(true);
 
   interface dataProps {
     id?: number,
@@ -22,7 +23,6 @@ function App() {
         }
         const result = await response.json();
         console.log("Fetched notes GET:", result);
-        // setNotes([...notes, ...result]);
         setNotes([...result]);
 
       } catch (error) {
@@ -41,9 +41,7 @@ function App() {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const result = await response;
         await createRequest({ method: 'GET' });
-        console.log("Fetched notes POST:", result);
       } catch (error) {
         console.error('Failed to post notes:', error);
       }
@@ -67,6 +65,14 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    if (isInitialLoad.current) {
+      createRequest({ method: 'GET' });
+      isInitialLoad.current = false;
+      console.log('initial');
+    }
+  }, []);
+
   const onClickHandler = (value: string) => {
     const data = {
       content: value,
@@ -89,7 +95,6 @@ function App() {
     const data = {
       method: 'GET'
     }
-    console.log('clicked')
     createRequest(data)
   }
 
