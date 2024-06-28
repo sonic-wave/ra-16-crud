@@ -8,6 +8,8 @@ function App() {
   const [notes, setNotes] = useState<NoteProps[]>([])
   const isInitialLoad = useRef(true);
 
+  const localhost = 'http://localhost:7377/notes';
+
   interface dataProps {
     id?: number,
     content?: string,
@@ -17,7 +19,7 @@ function App() {
   async function createRequest(data: dataProps) {
     if (data.method === 'GET') {
       try {
-        const response = await fetch('http://localhost:7070/notes');
+        const response = await fetch(localhost);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -32,7 +34,7 @@ function App() {
 
     if (data.method === 'POST') {
       try {
-        const response = await fetch('http://localhost:7070/notes', {
+        const response = await fetch(localhost, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -49,7 +51,7 @@ function App() {
 
     if (data.method === 'DELETE') {
       try {
-        const response = await fetch(`http://localhost:7070/notes/${data.id}`, {
+        const response = await fetch(`${localhost}${data.id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
