@@ -51,7 +51,7 @@ function App() {
 
     if (data.method === 'DELETE') {
       try {
-        const response = await fetch(`${localhost}:${data.id}`, {
+        const response = await fetch(`${localhost}/${data.id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
