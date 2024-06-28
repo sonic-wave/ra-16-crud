@@ -1,0 +1,42 @@
+.input-component {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 25px;
+}
+
+.input-title {
+    text-align: left;
+    font-weight: bold;
+}
+
+.input-textarea {
+    width: 400px;
+    height: 100px;
+    resize: none;
+    padding: 0;
+}
+
+.input-area {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.input-button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: cornflowerblue;
+    color: #fff;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+  
+  .input-button:hover {
+    background-color: royalblue;
+  }
