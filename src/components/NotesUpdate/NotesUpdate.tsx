@@ -1,4 +1,3 @@
-import React from 'react'
 import './NotesUpdate.css'
 
 export const NotesUpdate = ({updateHandler}: {updateHandler: () => void}) => {

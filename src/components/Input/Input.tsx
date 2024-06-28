@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import './Input.css'
 
 export const Input = ({ onClickHandler }: { onClickHandler: (value: string) => void }) => {
